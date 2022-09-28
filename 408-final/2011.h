@@ -7,27 +7,13 @@
 
 
 #include "../algorithm-problems/tools.h"
+#include "./408tools.h"
 /*
  * 算法思想：
  * 将两个序列合并成新的序列X，对X进行快速排序得到有序序列，L为新序列的长度，若L为奇数，则选取X中下标为L/2的元素，若为偶数，则选取x中L/2+1的元素
  * 时间复杂度：(l log2l)
  * 空间复杂度：log2l
  */
-void quickSort(int a[], int l, int r) {
-    if (l >= r) return;
-    int key, i=l, j=r;
-    key = a[l];
-    while (i < j) {
-        while (a[j] > key && j>i) j--;
-        a[i] = a[j];
-        while (a[i] <= key && i<j) i++;
-        a[j] = a[i];
-    }
-    a[i] = key;
-    quickSort(a, l, i-1);
-    quickSort(a, i+1, r);
-}
-
 int choose(int a[], int m, int b[], int n) { //m是第一个序列的长度，n是第二个
     //合并两个序列为新的序列。
     int L = m + n;
@@ -39,7 +25,7 @@ int choose(int a[], int m, int b[], int n) { //m是第一个序列的长度，n�
     for (int i = 0; i< n; ++i) {
         x[m+i] = b[i];
     }
-    quickSort(x, 0, L-1);
+    final408::quickSort(x, 0, L-1);  //快排
     if (L % 2 == 0)
         return x[L/2 -1];
     return x[L/2];
