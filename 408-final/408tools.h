@@ -22,6 +22,7 @@ namespace final408 {
         quickSort(a, l+1, high);
     }
 
+
     //交换a 和 b 的值
     void swap(int &a, int &b){
         int tmp;
